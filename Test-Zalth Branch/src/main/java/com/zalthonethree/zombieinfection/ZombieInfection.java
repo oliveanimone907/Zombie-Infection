@@ -5,6 +5,7 @@ import java.lang.reflect.Modifier;
 
 import net.minecraft.potion.Potion;
 
+import com.zalthonethree.zombieinfection.api.ZombieInfectionAPI;
 import com.zalthonethree.zombieinfection.handler.ConfigurationHandler;
 import com.zalthonethree.zombieinfection.init.ModItems;
 import com.zalthonethree.zombieinfection.init.Recipes;

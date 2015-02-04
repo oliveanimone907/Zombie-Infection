@@ -3,9 +3,12 @@ package com.zalthonethree.zombieinfection.event;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
+import net.minecraft.potion.Potion;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.EntityDamageSource;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.player.PlayerUseItemEvent.Finish;
 
 import com.zalthonethree.zombieinfection.ZombieInfection;
 import com.zalthonethree.zombieinfection.potion.PotionHelper;
@@ -13,6 +16,7 @@ import com.zalthonethree.zombieinfection.potion.PotionHelper;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class InfectionEvent /*extends EntityDragon*/ {
+
 	@SubscribeEvent public void onAttack(LivingHurtEvent event) {
 		if (event.source instanceof EntityDamageSource) {
 			EntityDamageSource source = (EntityDamageSource) event.source;
