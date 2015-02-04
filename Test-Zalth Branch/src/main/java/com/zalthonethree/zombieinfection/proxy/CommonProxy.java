@@ -2,6 +2,7 @@ package com.zalthonethree.zombieinfection.proxy;
 
 import net.minecraftforge.common.MinecraftForge;
 
+import com.zalthonethree.zombieinfection.event.InfectedEntityUpdateEvent;
 import com.zalthonethree.zombieinfection.event.InfectedPlayerUpdateEvent;
 import com.zalthonethree.zombieinfection.event.InfectionEvent;
 
@@ -20,6 +21,9 @@ public abstract class CommonProxy /*extends EntityDragon*/ implements IProxy {
 		if (!updateEventRegistered) {
 			MinecraftForge.EVENT_BUS.register(new InfectedPlayerUpdateEvent());
 			FMLCommonHandler.instance().bus().register(new InfectedPlayerUpdateEvent());
+			
+			MinecraftForge.EVENT_BUS.register(new InfectedEntityUpdateEvent());
+			FMLCommonHandler.instance().bus().register(new InfectedEntityUpdateEvent());
 			updateEventRegistered = true;
 		}
 	}
