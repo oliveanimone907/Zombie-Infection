@@ -11,6 +11,7 @@ import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.EntityDamageSource;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.player.PlayerUseItemEvent.Stop;
 
 import com.zalthonethree.zombieinfection.ZombieInfection;
 import com.zalthonethree.zombieinfection.api.ZombieInfectionAPI;
@@ -39,7 +40,7 @@ public class InfectionEvent /*extends EntityDragon*/ {
 					EntityPlayer attacked = (EntityPlayer) target;
 					if ((attacked.getRNG().nextInt(100) + 1) <= infectionChance) {
 						if (!attacked.isPotionActive(ZombieInfection.potionInfection)) {
-							attacked.addChatMessage(new ChatComponentTranslation("zombieinfection.chat.infected"));
+							if(ConfigurationHandler.enableMessages()) attacked.addChatMessage(new ChatComponentTranslation("zombieinfection.chat.infected"));
 							attacked.addPotionEffect(PotionHelper.createInfection(0));
 						}
 					}

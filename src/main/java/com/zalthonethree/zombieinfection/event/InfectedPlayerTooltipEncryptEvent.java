@@ -5,8 +5,10 @@ import java.util.Collections;
 
 import com.zalthonethree.zombieinfection.ZombieInfection;
 import com.zalthonethree.zombieinfection.api.ZombieInfectionAPI;
+import com.zalthonethree.zombieinfection.handler.ConfigurationHandler;
 import com.zalthonethree.zombieinfection.utility.TimeInfectedTracking;
 
+import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.StatCollector;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import cpw.mods.fml.common.eventhandler.EventPriority;
@@ -16,7 +18,7 @@ public class InfectedPlayerTooltipEncryptEvent /*extends EntityDragon*/ {
 	@SubscribeEvent(priority = EventPriority.LOWEST) public void encryptTooltip(ItemTooltipEvent event) {
 		if (event.entityPlayer.isPotionActive(ZombieInfection.potionInfection)
 		&& !event.entityPlayer.isPotionActive(ZombieInfection.potionCure)) {
-			if (TimeInfectedTracking.getSecondsInfected(event.entityPlayer) > 60) {
+		//	if (TimeInfectedTracking.getSecondsInfected(event.entityPlayer) > 5) {
 				if (!ZombieInfectionAPI.getEncryptionExclusions().contains(event.itemStack.getUnlocalizedName())
 				|| !ZombieInfectionAPI.getEncryptionSwitches().containsKey(event.itemStack.getUnlocalizedName())) {
 					for (int i = 0; i < event.toolTip.size(); i ++) {
@@ -32,7 +34,7 @@ public class InfectedPlayerTooltipEncryptEvent /*extends EntityDragon*/ {
 						}
 						event.toolTip.set(i, ns);
 					}
-					event.toolTip.add(StatCollector.translateToLocal("tooltip.infectedeyes"));
+					//if (ConfigurationHandler.enableMessages()) event.entityPlayer.addChatMessage(new ChatComponentTranslation("tooltip.infectedeyes"));
 				}
 				if (ZombieInfectionAPI.getEncryptionSwitches().containsKey(event.itemStack.getUnlocalizedName())) {
 					event.toolTip.set(0, ZombieInfectionAPI.getEncryptionSwitches().get(event.itemStack.getUnlocalizedName()));
@@ -40,4 +42,4 @@ public class InfectedPlayerTooltipEncryptEvent /*extends EntityDragon*/ {
 			}
 		}
 	}
-}
+//}

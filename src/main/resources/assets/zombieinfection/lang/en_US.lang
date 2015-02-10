@@ -1,5 +1,6 @@
 zombieinfection.chat.infected=You have been infected, find the cure.
 zombieinfection.chat.playerinfected=You have been infected by another player, find the cure.
+zombieinfection.chat.worse=The infection has started to spread.
 tooltip.cure=Cures the Zombie Infection.
 item.zombieinfection:cure.name=Infection Cure
 itemGroup.zombieInfection=Zombie Infection

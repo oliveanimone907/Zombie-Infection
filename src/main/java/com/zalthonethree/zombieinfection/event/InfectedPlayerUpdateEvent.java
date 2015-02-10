@@ -5,6 +5,7 @@ import java.util.Iterator;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ChatComponentTranslation;
+import net.minecraft.util.StatCollector;
 
 import com.zalthonethree.zombieinfection.ZombieInfection;
 import com.zalthonethree.zombieinfection.api.CustomInfectionEffect;
@@ -30,12 +31,13 @@ public class InfectedPlayerUpdateEvent /*extends EntityDragon*/ {
 				customEffect.run(player, timeInfected);
 			}
 			
-			player.addPotionEffect(PotionHelper.createInfection(timeInfected < (120) ? 0 : 1));
-			player.addPotionEffect(PotionHelper.createHunger(timeInfected < (120) ? 0 : 1));
-			player.addPotionEffect(PotionHelper.createSlowness(timeInfected < (120) ? 0 : 1));
-			player.addPotionEffect(PotionHelper.createMiningFatigue(timeInfected < (120) ? 0 : 1));
-			player.addPotionEffect(PotionHelper.createWeakness(timeInfected < (120) ? 0 : 1));
-			if (timeInfected > (480)) player.addPotionEffect(PotionHelper.createWither(0));
+			player.addPotionEffect(PotionHelper.createInfection(timeInfected < (60) ? 0 : 1));
+			//if (timeInfected == (30) && ConfigurationHandler.enableMessages()) player.addChatMessage(new ChatComponentTranslation("zombieinfection.chat.worse"));
+			if (timeInfected > (30) && ConfigurationHandler.enableHunger()) player.addPotionEffect(PotionHelper.createHunger(timeInfected < (150) ? 0 : 1));
+			if (timeInfected > (30) && ConfigurationHandler.enableSlowness()) player.addPotionEffect(PotionHelper.createSlowness(timeInfected < (150) ? 0 : 1));
+			if (timeInfected > (30) && ConfigurationHandler.enableMiningFatigue()) player.addPotionEffect(PotionHelper.createMiningFatigue(timeInfected < (150) ? 0 : 1));
+			if (timeInfected > (30) && ConfigurationHandler.enableWeakness()) player.addPotionEffect(PotionHelper.createWeakness(timeInfected < (150) ? 0 : 1));
+			if (timeInfected > (480) && ConfigurationHandler.enableWither()) player.addPotionEffect(PotionHelper.createWither(0));
 			if (player.getFoodStats().getFoodLevel() > FoodTracking.get(player)) {
 				player.getFoodStats().addStats(FoodTracking.get(player) - player.getFoodStats().getFoodLevel(), 0);
 			}
