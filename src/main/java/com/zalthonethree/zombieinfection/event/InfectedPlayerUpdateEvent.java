@@ -5,7 +5,6 @@ import java.util.Iterator;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ChatComponentTranslation;
-import net.minecraft.util.StatCollector;
 
 import com.zalthonethree.zombieinfection.ZombieInfection;
 import com.zalthonethree.zombieinfection.api.CustomInfectionEffect;
@@ -31,13 +30,13 @@ public class InfectedPlayerUpdateEvent /*extends EntityDragon*/ {
 				customEffect.run(player, timeInfected);
 			}
 			
-			player.addPotionEffect(PotionHelper.createInfection(timeInfected < (60) ? 0 : 1));
-			//if (timeInfected == (30) && ConfigurationHandler.enableMessages()) player.addChatMessage(new ChatComponentTranslation("zombieinfection.chat.worse"));
-			if (timeInfected > (30) && ConfigurationHandler.enableHunger()) player.addPotionEffect(PotionHelper.createHunger(timeInfected < (150) ? 0 : 1));
-			if (timeInfected > (30) && ConfigurationHandler.enableSlowness()) player.addPotionEffect(PotionHelper.createSlowness(timeInfected < (150) ? 0 : 1));
-			if (timeInfected > (30) && ConfigurationHandler.enableMiningFatigue()) player.addPotionEffect(PotionHelper.createMiningFatigue(timeInfected < (150) ? 0 : 1));
-			if (timeInfected > (30) && ConfigurationHandler.enableWeakness()) player.addPotionEffect(PotionHelper.createWeakness(timeInfected < (150) ? 0 : 1));
-			if (timeInfected > (480) && ConfigurationHandler.enableWither()) player.addPotionEffect(PotionHelper.createWither(0));
+			player.addPotionEffect(PotionHelper.createInfection(timeInfected < 60 ? 0 : 1));
+			if (ConfigurationHandler.enableSlowness()) player.addPotionEffect(PotionHelper.createSlowness(timeInfected < 60 ? 0 : 1));
+			if (ConfigurationHandler.enableHunger() && timeInfected >= 20) player.addPotionEffect(PotionHelper.createHunger(timeInfected < 80 ? 0 : 1));
+			if (ConfigurationHandler.enableMiningFatigue() && timeInfected >= 40) player.addPotionEffect(PotionHelper.createMiningFatigue(timeInfected < 100 ? 0 : 1));
+			if (ConfigurationHandler.enableWeakness() && timeInfected >= 60) player.addPotionEffect(PotionHelper.createWeakness(timeInfected < 120 ? 0 : 1));
+			if (ConfigurationHandler.enableWither() && timeInfected >= 480) player.addPotionEffect(PotionHelper.createWither(0));
+			
 			if (player.getFoodStats().getFoodLevel() > FoodTracking.get(player)) {
 				player.getFoodStats().addStats(FoodTracking.get(player) - player.getFoodStats().getFoodLevel(), 0);
 			}
@@ -55,6 +54,7 @@ public class InfectedPlayerUpdateEvent /*extends EntityDragon*/ {
 				&& player.worldObj.isDaytime()
 				&& !player.worldObj.isRaining()
 				&& !player.worldObj.isThundering()
+				&& timeInfected >= 80
 				&& player.inventory.armorInventory[3] == null) {
 					player.setFire(1);
 				}
@@ -79,7 +79,7 @@ public class InfectedPlayerUpdateEvent /*extends EntityDragon*/ {
 				}
 			}
 		} else {
-			TimeInfectedTracking.remove(player);
+			if (FMLCommonHandler.instance().getEffectiveSide() == Side.SERVER) TimeInfectedTracking.remove(player);
 			FoodTracking.remove(player);
 		}
 	}

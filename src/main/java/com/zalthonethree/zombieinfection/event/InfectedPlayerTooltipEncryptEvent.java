@@ -3,14 +3,13 @@ package com.zalthonethree.zombieinfection.event;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import com.zalthonethree.zombieinfection.ZombieInfection;
-import com.zalthonethree.zombieinfection.api.ZombieInfectionAPI;
-import com.zalthonethree.zombieinfection.handler.ConfigurationHandler;
-import com.zalthonethree.zombieinfection.utility.TimeInfectedTracking;
-
-import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.StatCollector;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
+
+import com.zalthonethree.zombieinfection.ZombieInfection;
+import com.zalthonethree.zombieinfection.api.ZombieInfectionAPI;
+import com.zalthonethree.zombieinfection.utility.TimeInfectedTrackingClient;
+
 import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
@@ -18,9 +17,11 @@ public class InfectedPlayerTooltipEncryptEvent /*extends EntityDragon*/ {
 	@SubscribeEvent(priority = EventPriority.LOWEST) public void encryptTooltip(ItemTooltipEvent event) {
 		if (event.entityPlayer.isPotionActive(ZombieInfection.potionInfection)
 		&& !event.entityPlayer.isPotionActive(ZombieInfection.potionCure)) {
-		//	if (TimeInfectedTracking.getSecondsInfected(event.entityPlayer) > 5) {
-				if (!ZombieInfectionAPI.getEncryptionExclusions().contains(event.itemStack.getUnlocalizedName())
-				|| !ZombieInfectionAPI.getEncryptionSwitches().containsKey(event.itemStack.getUnlocalizedName())) {
+			if (TimeInfectedTrackingClient.getSecondsInfected() > 60) {
+				boolean doShuffle = true;
+				if (ZombieInfectionAPI.getEncryptionExclusions().contains(event.itemStack.getUnlocalizedName())) doShuffle = false;
+				if (ZombieInfectionAPI.getEncryptionSwitches().containsKey(event.itemStack.getUnlocalizedName())) doShuffle = false;
+				if (doShuffle) {
 					for (int i = 0; i < event.toolTip.size(); i ++) {
 						String s = event.toolTip.get(i);
 						ArrayList<String> chars = new ArrayList<String>();
@@ -34,12 +35,17 @@ public class InfectedPlayerTooltipEncryptEvent /*extends EntityDragon*/ {
 						}
 						event.toolTip.set(i, ns);
 					}
-					//if (ConfigurationHandler.enableMessages()) event.entityPlayer.addChatMessage(new ChatComponentTranslation("tooltip.infectedeyes"));
+					event.toolTip.add(StatCollector.translateToLocal("tooltip.infectedeyes"));
 				}
 				if (ZombieInfectionAPI.getEncryptionSwitches().containsKey(event.itemStack.getUnlocalizedName())) {
 					event.toolTip.set(0, ZombieInfectionAPI.getEncryptionSwitches().get(event.itemStack.getUnlocalizedName()));
+					if (ZombieInfectionAPI.getEncryptionSwitchesTooltips().containsKey(event.itemStack.getUnlocalizedName())) {
+						for (String tT : ZombieInfectionAPI.getEncryptionSwitchesTooltips().get(event.itemStack.getUnlocalizedName())) {
+							event.toolTip.add(tT);
+						}
+					}
 				}
 			}
 		}
 	}
-//}
+}
