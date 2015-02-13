@@ -38,12 +38,12 @@ public class ConfigurationHandler /*extends EntityDragon*/ {
 		spreadDistance = configuration.getInt("Spread Distance", Configuration.CATEGORY_GENERAL, 3, 0, 5, "Distance to be from someone to spread the infection when PVP is off. 0 = Disabled");
 		villagerInfectionChance = configuration.getInt("Villager Infection Chance", Configuration.CATEGORY_GENERAL, 25, 0, 100, "Chance for infection to spread to villager upon attack.");
 		
-		enableSlowness = configuration.getBoolean("Enable Slowness", Configuration.CATEGORY_GENERAL, true, "Infected players get Slowness");
-		enableHunger = configuration.getBoolean("Enable Hunger", Configuration.CATEGORY_GENERAL, true, "Infected players get Hunger after 20 seconds");
-		enableMiningFatigue = configuration.getBoolean("Enable Mining Fatigue", Configuration.CATEGORY_GENERAL, true, "Infected players get Mining Fatigue after 40 seconds");
-		enableWeakness = configuration.getBoolean("Enable Weakness", Configuration.CATEGORY_GENERAL, true, "Infected players get Weakness after 60 seconds");
-		enableWither = configuration.getBoolean("Enable Wither", Configuration.CATEGORY_GENERAL, true, "Infected players get Wither after 480 seconds");
-		enableBurning = configuration.getBoolean("Enable Burning", Configuration.CATEGORY_GENERAL, true, "Infected players catch fire in sunlight after 80 seconds");
+		enableSlowness = configuration.getBoolean("Enable Slowness", "Effects", true, "Infected players get Slowness");
+		enableHunger = configuration.getBoolean("Enable Hunger", "Effects", true, "Infected players get Hunger after 20 seconds");
+		enableMiningFatigue = configuration.getBoolean("Enable Mining Fatigue", "Effects", true, "Infected players get Mining Fatigue after 40 seconds");
+		enableWeakness = configuration.getBoolean("Enable Weakness", "Effects", true, "Infected players get Weakness after 60 seconds");
+		enableWither = configuration.getBoolean("Enable Wither", "Effects", true, "Infected players get Wither after 480 seconds");
+		enableBurning = configuration.getBoolean("Enable Burning", "Effects", true, "Infected players catch fire in sunlight after 80 seconds");
 		
 		if (configuration.hasChanged()) {
 			configuration.save();

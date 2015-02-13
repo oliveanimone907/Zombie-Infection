@@ -1,6 +1,16 @@
+
 zombieinfection.chat.infected=You have been infected, find the cure.
 zombieinfection.chat.playerinfected=You have been infected by another player, find the cure.
-tooltip.cure=Cures the Zombie Infection.
+
 item.zombieinfection:cure.name=Infection Cure
 itemGroup.zombieInfection=Zombie Infection
+
+tooltip.cure=Cures the Zombie Infection.
 tooltip.infectedeyes=The infection has spread to your eyes.
+
+##Easter Eggs
+
+easteregg.stew=Noodle Soup
+easteregg.description.stew=Erhm.. Are you sure these are noodles?
+easteregg.egg=Turtle Egg
+easteregg.description.egg=Looks quite derpy

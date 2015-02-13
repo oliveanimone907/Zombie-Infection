@@ -67,6 +67,7 @@ import cpw.mods.fml.common.event.FMLServerStartingEvent;
 	}
 	
 	@Mod.EventHandler public void postInit(FMLPostInitializationEvent event) {
+		EasterEggs.init();
 		LogHelper.info("Post-Init Complete");
 	}
 	
