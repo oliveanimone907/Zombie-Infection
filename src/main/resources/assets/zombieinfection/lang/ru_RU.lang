@@ -24,9 +24,23 @@ tooltip.infectedeyes=Инфекция поразила твои глаза!
 potion.zombieinfection.infection=Инфекция
 potion.zombieinfection.cure=Лечение
 
+# Entities #
+
+entity.Zombie Cow=Zombie Cow
+entity.Zombie Pig=Zombie Pig
+entity.Zombie Chicken=Zombie Chicken
+entity.Zombie Sheep=Zombie Sheep
+
 # Easter Eggs #
 
 easteregg.stew=Суп с лапшой
 easteregg.description.stew=Хм... Ты уверен, что это лапша?
+
 easteregg.egg=Черепашье яйцо
-easteregg.description.egg=Looks quite derpy
+easteregg.description.egg=Looks quite odd
+
+easteregg.sponge=Cheese
+easteregg.description.sponge=Made by Dizkonnekted
+
+easteregg.cooked_porkchop=Bacon
+easteregg.description.cooked_porkchop=Looks tasty..
