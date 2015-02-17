@@ -33,11 +33,14 @@ public class EntityZombieChicken extends EntityMob{
     public float field_70884_g;
     public float field_70888_h;
     public float field_70889_i = 1.0F;
+    
+    public int timeUntilNextEgg;
 	
 	public EntityZombieChicken(World p_i1683_1_) {
 		super(p_i1683_1_);
-        this.setSize(0.9F, 1.3F);
+        this.setSize(0.3F, 0.7F);
 	    this.getNavigator().setAvoidsWater(false);
+        this.timeUntilNextEgg = this.rand.nextInt(6000) + 6000;
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(2, new EntityAIWander(this, 1.0D));
         this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityPlayer.class, 1.0D, false));
@@ -159,6 +162,15 @@ public class EntityZombieChicken extends EntityMob{
         }
 
         this.field_70886_e += this.field_70889_i * 2.0F;
+        
+        this.field_70886_e += this.field_70889_i * 2.0F;
+
+        if (!this.worldObj.isRemote && !this.isChild() && --this.timeUntilNextEgg <= 0)
+        {
+            this.playSound("mob.chicken.plop", 1.0F, (this.rand.nextFloat() - this.rand.nextFloat()) * 0.2F + 1.0F);
+            this.dropItem(Items.egg, 1);
+            this.timeUntilNextEgg = this.rand.nextInt(6000) + 6000;
+        }
     }
    
    

@@ -22,6 +22,7 @@ import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
@@ -146,6 +147,29 @@ public class EntityZombieCow extends EntityMob{
 
            this.worldObj.spawnEntityInWorld(entityzombiecow);
            this.worldObj.playAuxSFXAtEntity((EntityPlayer)null, 1016, (int)this.posX, (int)this.posY, (int)this.posZ, 0);
+       }
+   }
+   
+   public boolean interact(EntityPlayer p_70085_1_)
+   {
+       ItemStack itemstack = p_70085_1_.inventory.getCurrentItem();
+
+       if (itemstack != null && itemstack.getItem() == Items.bucket && !p_70085_1_.capabilities.isCreativeMode)
+       {
+           if (itemstack.stackSize-- == 1)
+           {
+               p_70085_1_.inventory.setInventorySlotContents(p_70085_1_.inventory.currentItem, new ItemStack(Items.milk_bucket));
+           }
+           else if (!p_70085_1_.inventory.addItemStackToInventory(new ItemStack(Items.milk_bucket)))
+           {
+               p_70085_1_.dropPlayerItemWithRandomChoice(new ItemStack(Items.milk_bucket, 1, 0), false);
+           }
+
+           return true;
+       }
+       else
+       {
+           return super.interact(p_70085_1_);
        }
    }
 }
