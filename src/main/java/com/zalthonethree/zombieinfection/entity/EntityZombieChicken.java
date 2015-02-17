@@ -162,8 +162,6 @@ public class EntityZombieChicken extends EntityMob{
         }
 
         this.field_70886_e += this.field_70889_i * 2.0F;
-        
-        this.field_70886_e += this.field_70889_i * 2.0F;
 
         if (!this.worldObj.isRemote && !this.isChild() && --this.timeUntilNextEgg <= 0)
         {
