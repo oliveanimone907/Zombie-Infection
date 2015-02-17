@@ -42,10 +42,9 @@ public class ConfigurationHandler /*extends EntityDragon*/ {
 	
 	private static void loadConfiguration() {
 		spreadDistance = configuration.getInt("Spread Distance", Configuration.CATEGORY_GENERAL, 3, 0, 5, "Distance to be from someone to spread the infection when PVP is off. 0 = Disabled");
-		
-		villagerInfectionChance = configuration.getInt("Villager Infection Chance", "Infection Chances", 25, 0, 100, "Chance for infection to spread to villager upon attack.");
-		animalInfectionChance = configuration.getInt("Animal Infection Chance", "Infection Chances", 25, 0, 100, "Chance for infection to spread to an animal upon attack.");
-		playerInfectionChance = configuration.getInt("Player Infection Chance", "Infection Chances", 10, 0, 100, "Chance a zombie will infect a player.");
+		villagerInfectionChance = configuration.getInt("Villager Infection Chance", Configuration.CATEGORY_GENERAL, 25, 0, 100, "Chance for infection to spread to villager upon attack.");
+		animalInfectionChance = configuration.getInt("Animal Infection Chance", Configuration.CATEGORY_GENERAL, 25, 0, 100, "Chance animals will get infected.");
+		playerInfectionChance = configuration.getInt("Player Infection Chance", Configuration.CATEGORY_GENERAL, 10, 0, 100, "Chance a zombie will infect a player.");
 		
 		enableSlowness = configuration.getBoolean("Enable Slowness", "Effects", true, "Infected players get Slowness");
 		enableHunger = configuration.getBoolean("Enable Hunger", "Effects", true, "Infected players get Hunger after 20 seconds");

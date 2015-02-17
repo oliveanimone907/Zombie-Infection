@@ -24,7 +24,5 @@ public abstract class CommonProxy /*extends EntityDragon*/ implements IProxy {
 		}
 	}
 	
-	public void registerRenderers() {
-		
-	}
+	public void registerRenderers() {}
 }

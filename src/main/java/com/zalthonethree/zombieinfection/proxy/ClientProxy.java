@@ -7,10 +7,16 @@ import net.minecraft.client.model.ModelPig;
 import net.minecraftforge.common.MinecraftForge;
 
 import com.zalthonethree.zombieinfection.client.gui.GuiEyeInfection;
-import com.zalthonethree.zombieinfection.entity.*;
+import com.zalthonethree.zombieinfection.client.model.ModelZombieSheep;
+import com.zalthonethree.zombieinfection.client.render.RenderZombieChicken;
+import com.zalthonethree.zombieinfection.client.render.RenderZombieCow;
+import com.zalthonethree.zombieinfection.client.render.RenderZombiePig;
+import com.zalthonethree.zombieinfection.client.render.RenderZombieSheep;
+import com.zalthonethree.zombieinfection.entity.EntityZombieChicken;
+import com.zalthonethree.zombieinfection.entity.EntityZombieCow;
+import com.zalthonethree.zombieinfection.entity.EntityZombiePig;
+import com.zalthonethree.zombieinfection.entity.EntityZombieSheep;
 import com.zalthonethree.zombieinfection.event.InfectedPlayerTooltipEncryptEvent;
-import com.zalthonethree.zombieinfection.model.*;
-import com.zalthonethree.zombieinfection.render.*;
 import com.zalthonethree.zombieinfection.updatechecker.UpdateChecker;
 
 import cpw.mods.fml.client.registry.RenderingRegistry;
@@ -32,17 +38,11 @@ public class ClientProxy extends CommonProxy/*, EntityDragon*/ {
 		encrytionRegistered = true;
 	}
 	
-	public void registerRenderInformation(){}
-	
-	public void registerRenderers(){
+	@Override public void registerRenderers() {
 		float shadowSize = 0.5F;
-		
 		RenderingRegistry.registerEntityRenderingHandler(EntityZombieCow.class, new RenderZombieCow(new ModelCow(), shadowSize));
-		
-		RenderingRegistry.registerEntityRenderingHandler(EntityZombiePig.class, new RenderZombiePig(new ModelPig(), shadowSize));
-		
 		RenderingRegistry.registerEntityRenderingHandler(EntityZombieChicken.class, new RenderZombieChicken(new ModelChicken(), shadowSize));
-		
+		RenderingRegistry.registerEntityRenderingHandler(EntityZombiePig.class, new RenderZombiePig(new ModelPig(), shadowSize));
 		RenderingRegistry.registerEntityRenderingHandler(EntityZombieSheep.class, new RenderZombieSheep(new ModelZombieSheep(), shadowSize));
-		}
+	}
 }

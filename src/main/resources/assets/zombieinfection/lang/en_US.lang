@@ -8,9 +8,18 @@ zombieinfection.update.major=A new major update for Zombie Infection is availabl
 zombieinfection.update.minor=A new minor update for Zombie Infection is available.
 zombieinfection.update.download=["Click for... [",{"text":"CurseForge Download","color":"gold","hoverEvent":{"action":"show_text","value":{"text":"Download page","color":"aqua"}},"clickEvent":{"action":"open_url","value":"http://minecraft.curseforge.com/mc-mods/227518-zombie-infection/files"}},"]"]
 
+# Entities #
+
+entity.com.zalthonethree.zombieinfection.entity.entityzombiechicken.name=Zombie Chicken
+entity.com.zalthonethree.zombieinfection.entity.entityzombiecow.name=Zombie Cow
+entity.com.zalthonethree.zombieinfection.entity.entityzombiepig.name=Zombie Pig
+entity.com.zalthonethree.zombieinfection.entity.entityzombiesheep.name=Zombie Sheep
+
 # Items #
 
 item.zombieinfection:cure.name=Infection Cure
+item.zombieinfection:infectedegg=Infected Egg
+item.zombieinfection:infectedmilk=Infected Milk
 
 # Item Groups #
 
@@ -26,13 +35,6 @@ tooltip.infectedeyes=The infection has spread to your eyes.
 potion.zombieinfection.infection=Infection
 potion.zombieinfection.cure=Infection Cure
 
-# Entities #
-
-entity.Zombie Cow=Zombie Cow
-entity.Zombie Pig=Zombie Pig
-entity.Zombie Chicken=Zombie Chicken
-entity.Zombie Sheep=Zombie Sheep
-
 # Easter Eggs #
 
 easteregg.stew=Noodle Soup
@@ -44,5 +46,5 @@ easteregg.description.egg=Looks quite odd
 easteregg.sponge=Cheese
 easteregg.description.sponge=Made by Dizkonnekted
 
-easteregg.cooked_porkchop=Bacon
-easteregg.description.cooked_porkchop=Looks tasty..
+easteregg.cooked_prokchop=Bacon
+easteregg.description.cooked_porkchop=Looks tasty...

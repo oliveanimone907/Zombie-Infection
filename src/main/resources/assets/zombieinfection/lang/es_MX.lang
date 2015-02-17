@@ -6,30 +6,37 @@ zombieinfection.chat.infected=Has sido infectado, encuentra la cura.
 zombieinfection.chat.playerinfected=Has sido infectado por otro jugador, encuentra la cura.
 zombieinfection.chat.rotteninfection=Has sido infectado por comida podrida.
 
-# Items #
-
-item.zombieinfection:cure.name=Cura de la Infección
-
-# Item Groups #
-
-itemGroup.zombieInfection=Infección Zombi
-
-# Tooltips #
-
-tooltip.cure=Cura la Infección Zombi.
-tooltip.infectedeyes=La infección ha contaminado tus ojos
-
-# Potions #
-
-potion.zombieinfection.infection=Infección
-potion.zombieinfection.cure=Cura de la Infección
+zombieinfection.update.major=Una actualización mayor para Zombie Infection está disponible.
+zombieinfection.update.minor=Una actualización menor para Zombie Infection está disponible.
+zombieinfection.update.download=["Click para... [",{"text":"Descarga, CurseForge","color":"gold","hoverEvent":{"action":"show_text","value":{"text":"Página de Descarga","color":"aqua"}},"clickEvent":{"action":"open_url","value":"http://minecraft.curseforge.com/mc-mods/227518-zombie-infection/files"}},"]"]
 
 # Entities #
 
-entity.Zombie Cow=Vaca Zombi
-entity.Zombie Pig=Cerdo Zombi
-entity.Zombie Chicken=Gallina Zombi
-entity.Zombie Sheep=Oveja Zombi
+entity.com.zalthonethree.zombieinfection.entity.entityzombiechicken.name=Gallina Zombi
+entity.com.zalthonethree.zombieinfection.entity.entityzombiecow.name=Vaca Zombi
+entity.com.zalthonethree.zombieinfection.entity.entityzombiepig.name=Cerdo Zombi
+entity.com.zalthonethree.zombieinfection.entity.entityzombiesheep.name=Oveja Zombi
+
+# Items #
+
+item.zombieinfection:cure.name=Cura de la Infecci�n
+item.zombieinfection:infectedegg=Huevo Infectado
+item.zombieinfection:infectedmilk=Leche Infectada
+
+# Item Groups #
+
+itemGroup.zombieInfection=Infecci�n Zombi
+
+# Tooltips #
+
+tooltip.cure=Cura la Infecci�n Zombi.
+tooltip.infectedeyes=La infecci�n ha contaminado tus ojos
+
+# Potions #
+
+potion.zombieinfection.infection=Infecci�n
+potion.zombieinfection.cure=Cura de la Infecci�n
+
 
 # Easter Eggs #
 
@@ -37,10 +44,10 @@ easteregg.stew=Sopa de fideos
 easteregg.description.stew=Erhm.. Estas seguro de que estos son fideos?
 
 easteregg.egg=Huevo de Tortuga
-easteregg.description.egg=Se ve bastante extraño
+easteregg.description.egg=Se ve bastante extra�o
 
 easteregg.sponge=Queso
 easteregg.description.sponge=Hecho por Dizkonnekted
 
 easteregg.cooked_porkchop=Tocino
-easteregg.description.cooked_porkchop=Se ve delicioso..
+easteregg.description.cooked_porkchop=Se ve delicioso...

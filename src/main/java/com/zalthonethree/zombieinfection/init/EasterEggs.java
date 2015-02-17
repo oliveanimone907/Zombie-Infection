@@ -1,7 +1,5 @@
 package com.zalthonethree.zombieinfection.init;
 
-import net.minecraft.init.Items;
-
 import com.zalthonethree.zombieinfection.api.ZombieInfectionAPI;
 
 public class EasterEggs /*extends EntityDragon*/ {
