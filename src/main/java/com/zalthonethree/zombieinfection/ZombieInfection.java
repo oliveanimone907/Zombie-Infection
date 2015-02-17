@@ -6,6 +6,7 @@ import java.lang.reflect.Modifier;
 import net.minecraft.potion.Potion;
 
 import com.zalthonethree.zombieinfection.handler.ConfigurationHandler;
+import com.zalthonethree.zombieinfection.handler.PacketHandler;
 import com.zalthonethree.zombieinfection.init.BuiltInAPI;
 import com.zalthonethree.zombieinfection.init.EasterEggs;
 import com.zalthonethree.zombieinfection.init.ModItems;
@@ -13,6 +14,7 @@ import com.zalthonethree.zombieinfection.init.Recipes;
 import com.zalthonethree.zombieinfection.potion.PotionCure;
 import com.zalthonethree.zombieinfection.potion.PotionInfection;
 import com.zalthonethree.zombieinfection.proxy.IProxy;
+import com.zalthonethree.zombieinfection.updatechecker.UpdateChecker;
 import com.zalthonethree.zombieinfection.utility.LogHelper;
 
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -33,6 +35,9 @@ import cpw.mods.fml.common.event.FMLServerStartingEvent;
 	@Mod.EventHandler public void preInit(FMLPreInitializationEvent event) {
 		ConfigurationHandler.init(event.getSuggestedConfigurationFile());
 		FMLCommonHandler.instance().bus().register(new ConfigurationHandler());
+		
+		UpdateChecker.CheckForUpdates();
+		
 		Potion[] potionTypes = null;
 		
 		for (Field f : Potion.class.getDeclaredFields()) {
@@ -55,14 +60,15 @@ import cpw.mods.fml.common.event.FMLServerStartingEvent;
 		}
 		
 		ModItems.init();
+		PacketHandler.INSTANCE.ordinal();
 		LogHelper.info("Pre-Init Complete");
 	}
 	
 	@Mod.EventHandler public void init(FMLInitializationEvent event) {
 		proxy.init();
 		
-		potionInfection = (new PotionInfection(63, true, 0)).setIconIndex(3, 1).setPotionName("Infection");
-		potionCure = (new PotionCure(64, true, 0)).setIconIndex(2, 2).setPotionName("Infection Cure");
+		potionInfection = (new PotionInfection(63, true, 0)).setIconIndex(3, 1).setPotionName("potion.zombieinfection.infection");
+		potionCure = (new PotionCure(64, true, 0)).setIconIndex(2, 2).setPotionName("potion.zombieinfection.cure");
 		
 		EasterEggs.init();
 		BuiltInAPI.init();
