@@ -22,6 +22,7 @@ public class ConfigurationHandler /*extends EntityDragon*/ {
 	private static boolean enableWeakness = true;
 	private static boolean enableWither = true;
 	private static boolean enableBurning = true;
+	private static boolean enableEasterEggs = true;
 	
 	private static int spiderEyeInfectionChance = 20;
 	private static int poisonFoodInfectionChance = 10;
@@ -42,9 +43,11 @@ public class ConfigurationHandler /*extends EntityDragon*/ {
 	
 	private static void loadConfiguration() {
 		spreadDistance = configuration.getInt("Spread Distance", Configuration.CATEGORY_GENERAL, 3, 0, 5, "Distance to be from someone to spread the infection when PVP is off. 0 = Disabled");
-		villagerInfectionChance = configuration.getInt("Villager Infection Chance", Configuration.CATEGORY_GENERAL, 25, 0, 100, "Chance for infection to spread to villager upon attack.");
-		animalInfectionChance = configuration.getInt("Animal Infection Chance", Configuration.CATEGORY_GENERAL, 25, 0, 100, "Chance animals will get infected.");
-		playerInfectionChance = configuration.getInt("Player Infection Chance", Configuration.CATEGORY_GENERAL, 10, 0, 100, "Chance a zombie will infect a player.");
+		enableEasterEggs = configuration.getBoolean("Enable EasterEggs", Configuration.CATEGORY_GENERAL, true, "Enables Easter-eggs");
+		
+		villagerInfectionChance = configuration.getInt("Villager Infection Chance", "Chances", 25, 0, 100, "Chance for infection to spread to villager upon attack.");
+		animalInfectionChance = configuration.getInt("Animal Infection Chance", "Chances", 25, 0, 100, "Chance animals will get infected.");
+		playerInfectionChance = configuration.getInt("Player Infection Chance", "Chances", 10, 0, 100, "Chance a zombie will infect a player.");
 		
 		enableSlowness = configuration.getBoolean("Enable Slowness", "Effects", true, "Infected players get Slowness");
 		enableHunger = configuration.getBoolean("Enable Hunger", "Effects", true, "Infected players get Hunger after 20 seconds");
@@ -74,6 +77,7 @@ public class ConfigurationHandler /*extends EntityDragon*/ {
 	public static boolean enableWeakness() { return enableWeakness; }
 	public static boolean enableWither() { return enableWither; }
 	public static boolean enableBurning() { return enableBurning; }
+	public static boolean enableEasterEggs() { return enableEasterEggs; }
 	
 	public static int getSpiderEyeInfectionChance() { return spiderEyeInfectionChance; }
 	public static int getPoisonFoodInfectionChance() { return poisonFoodInfectionChance; }
