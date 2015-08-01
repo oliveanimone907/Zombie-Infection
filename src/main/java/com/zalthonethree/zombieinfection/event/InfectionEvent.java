@@ -38,9 +38,10 @@ public class InfectionEvent /*extends EntityDragon*/ {
 		if (event.source instanceof EntityDamageSource) {
 			EntityDamageSource source = (EntityDamageSource) event.source;
 			Entity attacker = source.getEntity();
+			if (attacker == null) return;
 			boolean infectiousMob = false;
 			int infectionChance = 0;
-			for (int entityId : ZombieInfectionAPI.getCustionInfectiousMobs()) {
+			for (int entityId : ZombieInfectionAPI.getCustomInfectiousMobs()) {
 				if (EntityList.getEntityID(attacker) == entityId) {
 					infectiousMob = true;
 					infectionChance = ZombieInfectionAPI.getCustomInfectionChances().get(entityId);
@@ -58,9 +59,7 @@ public class InfectionEvent /*extends EntityDragon*/ {
 				Entity target = event.entity;
 				if (target instanceof EntityPlayer) {
 					EntityPlayer attacked = (EntityPlayer) target;
-					if (Api.getMorphEntity(attacked.getCommandSenderName(), false) != null) {
-						if (Api.getMorphEntity(attacked.getCommandSenderName(), false) instanceof EntityZombie) infectionChance = (int) infectionChance / 2;
-					}
+					if (Api.getMorphEntity(attacked.getCommandSenderName(), false) instanceof EntityZombie) infectionChance = (int) infectionChance / 2;
 					if ((attacked.getRNG().nextInt(100) + 1) <= infectionChance) {
 						if (!attacked.isPotionActive(ZombieInfection.potionInfection)) {
 							attacked.addChatMessage(new ChatComponentTranslation("zombieinfection.chat.infected"));
@@ -141,7 +140,7 @@ public class InfectionEvent /*extends EntityDragon*/ {
 					EntityPlayer possiblespreader = (EntityPlayer) attacker;
 					if (possiblespreader.isPotionActive(ZombieInfection.potionInfection)) {
 						if (attacked.isPotionActive(Potion.wither) && !attacked.isChild()) {
-							if (attacked.getRNG().nextInt(100) + 1 <= ConfigurationHandler.getAnimalInfectionChance()) { //TODO getZombificationChanceFor(Entity)
+							if (attacked.getRNG().nextInt(100) + 1 <= ConfigurationHandler.getAnimalInfectionChance()) {
 								EntityCreature entityzombified = zombifyEntity(target);
 								entityzombified.copyLocationAndAnglesFrom(attacked);
 								attacked.worldObj.removeEntity(attacked);

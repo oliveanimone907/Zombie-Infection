@@ -10,16 +10,21 @@ zombieinfection.update.download=["Click for... [",{"text":"CurseForge Download",
 
 # Entities #
 
-entity.com.zalthonethree.zombieinfection.entity.entityzombiechicken.name=Zombie Chicken
-entity.com.zalthonethree.zombieinfection.entity.entityzombiecow.name=Zombie Cow
-entity.com.zalthonethree.zombieinfection.entity.entityzombiepig.name=Zombie Pig
-entity.com.zalthonethree.zombieinfection.entity.entityzombiesheep.name=Zombie Sheep
+entity.ZombieInfection.ZIZombieChicken.name=Zombie Chicken
+entity.ZombieInfection.ZIZombieCow.name=Zombie Cow
+entity.ZombieInfection.ZIZombiePig.name=Zombie Pig
+entity.ZombieInfection.ZIZombieSheep.name=Zombie Sheep
 
 # Items #
 
 item.zombieinfection:cure.name=Infection Cure
-item.zombieinfection:infectedegg=Infected Egg
-item.zombieinfection:infectedmilk=Infected Milk
+item.zombieinfection:infectedEgg.name=Infected Egg
+item.zombieinfection:infectedMilk.name=Infected Milk
+item.zombieinfection:knowledgeBook.name=Knowledge Book
+
+# Spawn Eggs #
+
+item.zombieinfection:spawnEggPig=Spawn Zombie Pig
 
 # Item Groups #
 
@@ -29,6 +34,7 @@ itemGroup.zombieInfection=Zombie Infection
 
 tooltip.cure=Cures the Zombie Infection.
 tooltip.infectedeyes=The infection has spread to your eyes.
+tooltip.knowledgeBook=A zombie survival guide
 
 # Potions #
 
@@ -46,5 +52,5 @@ easteregg.description.egg=Looks quite odd
 easteregg.sponge=Cheese
 easteregg.description.sponge=Made by Dizkonnekted
 
-easteregg.cooked_prokchop=Bacon
+easteregg.cooked_porkchop=Bacon
 easteregg.description.cooked_porkchop=Looks tasty...

@@ -17,6 +17,8 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class GuiEyeInfection extends Gui/*, EntityDragon*/ {
 	private Minecraft minecraftInstance;
+	private ResourceLocation uncracked = new ResourceLocation(Reference.MOD_ID.toLowerCase(), "textures/gui/eyeinfection.png");
+	private ResourceLocation cracked = new ResourceLocation(Reference.MOD_ID.toLowerCase(), "textures/gui/eyeinfectioncracked.png");
 	
 	public GuiEyeInfection(Minecraft MC) {
 		super();
@@ -24,14 +26,19 @@ public class GuiEyeInfection extends Gui/*, EntityDragon*/ {
 	}
 	
 	@SubscribeEvent(priority = EventPriority.NORMAL) public void onRender(RenderGameOverlayEvent.Pre event) {
-		if (event.isCanceled() || event.type != ElementType.HOTBAR || TimeInfectedTrackingClient.getSecondsInfected() < 60) return;
+		int timeInfected = TimeInfectedTrackingClient.getSecondsInfected();
+		if (event.isCanceled() || event.type != ElementType.HOTBAR || timeInfected < 60) return;
 		ScaledResolution sr = new ScaledResolution(minecraftInstance, minecraftInstance.displayWidth, minecraftInstance.displayHeight);
 		
 		GL11.glPushAttrib( GL11.GL_DEPTH_BUFFER_BIT | GL11.GL_ENABLE_BIT);
 		GL11.glEnable(GL11.GL_BLEND);
 		GL11.glDepthMask(false);
-		minecraftInstance.renderEngine.bindTexture(new ResourceLocation(Reference.MOD_ID.toLowerCase(), "textures/gui/eyeinfection.png"));
+		minecraftInstance.renderEngine.bindTexture(uncracked);
 		drawModalRectWithCustomSizedTexture(0, 0, 0, 0, sr.getScaledWidth(), sr.getScaledHeight(), sr.getScaledWidth(), sr.getScaledHeight());
+		if (timeInfected >= 120) {
+			minecraftInstance.renderEngine.bindTexture(cracked);
+			drawModalRectWithCustomSizedTexture(0, 0, 0, 0, sr.getScaledWidth(), sr.getScaledHeight(), sr.getScaledWidth(), sr.getScaledHeight());
+		}
 		GL11.glPopAttrib();
 	}
 }

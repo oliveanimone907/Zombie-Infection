@@ -4,9 +4,13 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelChicken;
 import net.minecraft.client.model.ModelCow;
 import net.minecraft.client.model.ModelPig;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 
+import com.zalthonethree.zombieinfection.Reference.IdTracking;
 import com.zalthonethree.zombieinfection.client.gui.GuiEyeInfection;
+import com.zalthonethree.zombieinfection.client.gui.KnowledgeBook;
 import com.zalthonethree.zombieinfection.client.model.ModelZombieSheep;
 import com.zalthonethree.zombieinfection.client.render.RenderZombieChicken;
 import com.zalthonethree.zombieinfection.client.render.RenderZombieCow;
@@ -16,6 +20,7 @@ import com.zalthonethree.zombieinfection.entity.EntityZombieChicken;
 import com.zalthonethree.zombieinfection.entity.EntityZombieCow;
 import com.zalthonethree.zombieinfection.entity.EntityZombiePig;
 import com.zalthonethree.zombieinfection.entity.EntityZombieSheep;
+import com.zalthonethree.zombieinfection.event.InfectedPlayerRenderEvent;
 import com.zalthonethree.zombieinfection.event.InfectedPlayerTooltipEncryptEvent;
 import com.zalthonethree.zombieinfection.updatechecker.UpdateChecker;
 
@@ -30,7 +35,7 @@ public class ClientProxy extends CommonProxy/*, EntityDragon*/ {
 		super.init();
 		MinecraftForge.EVENT_BUS.register(new GuiEyeInfection(Minecraft.getMinecraft()));
 		if (!updateEventRegistered) {
-			MinecraftForge.EVENT_BUS.register(new UpdateChecker());
+			MinecraftForge.EVENT_BUS.register(new InfectedPlayerRenderEvent());
 			FMLCommonHandler.instance().bus().register(new UpdateChecker());
 			updateEventRegistered = true;
 		}
@@ -44,5 +49,14 @@ public class ClientProxy extends CommonProxy/*, EntityDragon*/ {
 		RenderingRegistry.registerEntityRenderingHandler(EntityZombieChicken.class, new RenderZombieChicken(new ModelChicken(), shadowSize));
 		RenderingRegistry.registerEntityRenderingHandler(EntityZombiePig.class, new RenderZombiePig(new ModelPig(), shadowSize));
 		RenderingRegistry.registerEntityRenderingHandler(EntityZombieSheep.class, new RenderZombieSheep(new ModelZombieSheep(), shadowSize));
+	}
+
+	@Override public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
+		return null;
+	}
+
+	@Override public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
+		if (ID == IdTracking.BOOK) return KnowledgeBook.instance;
+		return null;
 	}
 }

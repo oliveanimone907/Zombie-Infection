@@ -6,36 +6,35 @@ zombieinfection.chat.infected=Habeis sido infectado, encuentra la cura.
 zombieinfection.chat.playerinfected=Habeis sido infectado por otro jugador, encuentra la cura.
 zombieinfection.chat.rotteninfection=Habeis sido infectado por comida podrida.
 
-zombieinfection.update.major=Una actualizaciÃ³n mayor para Zombie Infection estÃ¡ disponible.
-zombieinfection.update.minor=Una actualizaciÃ³n menor para Zombie Infection estÃ¡ disponible.
-zombieinfection.update.download=["Click para... [",{"text":"Descarga, CurseForge","color":"gold","hoverEvent":{"action":"show_text","value":{"text":"PÃ¡gina de Descarga","color":"aqua"}},"clickEvent":{"action":"open_url","value":"http://minecraft.curseforge.com/mc-mods/227518-zombie-infection/files"}},"]"]
 
 # Entities #
 
-entity.com.zalthonethree.zombieinfection.entity.entityzombiechicken.name=Gallina Zombi
-entity.com.zalthonethree.zombieinfection.entity.entityzombiecow.name=Vaca Zombi
-entity.com.zalthonethree.zombieinfection.entity.entityzombiepig.name=Cerdo Zombi
-entity.com.zalthonethree.zombieinfection.entity.entityzombiesheep.name=Oveja Zombi
+entity.ZIZombieChicken.name=Gallina Zombi
+entity.ZIZombieCow.name=Vaca Zombi
+entity.ZIZombiePig.name=Cerdo Zombi
+entity.ZIZombieSheep.name=Oveja Zombi
 
 # Items #
 
-item.zombieinfection:cure.name=Cura de la Infecciï¿½n
-item.zombieinfection:infectedegg=Huevo Infectado
-item.zombieinfection:infectedmilk=Leche Infectada
+item.zombieinfection:cure.name=Cura de la Infección
+item.zombieinfection:infectedEgg=Huevo Infectado
+item.zombieinfection:infectedMilk=Leche Infectada
+item.zombieinfection:knowledgeBook.name=Libro de Conocimiento
 
 # Item Groups #
 
-itemGroup.zombieInfection=Infecciï¿½n Zombi
+itemGroup.zombieInfection=Infección Zombi
 
 # Tooltips #
 
-tooltip.cure=Cura la Infecciï¿½n Zombi.
-tooltip.infectedeyes=La infecciï¿½n ha contaminado tus ojos
+tooltip.cure=Cura la Infección Zombi.
+tooltip.infectedeyes=La infección ha contaminado tus ojos
+tooltip.knowledgeBook=Una guía de supervivencia zombie
 
 # Potions #
 
-potion.zombieinfection.infection=Infecciï¿½n
-potion.zombieinfection.cure=Cura de la Infecciï¿½n
+potion.zombieinfection.infection=Infección
+potion.zombieinfection.cure=Cura de la Infección
 
 # Easter Eggs #
 
@@ -43,7 +42,7 @@ easteregg.stew=Sopa de fideos
 easteregg.description.stew=Erhm.. Estais seguro de que estos son fideos?
 
 easteregg.egg=Huevo de Tortuga
-easteregg.description.egg=Se ve bastante extraï¿½o
+easteregg.description.egg=Se ve bastante extraño
 
 easteregg.sponge=Queso
 easteregg.description.sponge=Hecho por Dizkonnekted
