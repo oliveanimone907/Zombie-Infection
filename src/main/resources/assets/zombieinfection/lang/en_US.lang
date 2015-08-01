@@ -22,10 +22,6 @@ item.zombieinfection:infectedEgg.name=Infected Egg
 item.zombieinfection:infectedMilk.name=Infected Milk
 item.zombieinfection:knowledgeBook.name=Knowledge Book
 
-# Spawn Eggs #
-
-item.zombieinfection:spawnEggPig=Spawn Zombie Pig
-
 # Item Groups #
 
 itemGroup.zombieInfection=Zombie Infection
