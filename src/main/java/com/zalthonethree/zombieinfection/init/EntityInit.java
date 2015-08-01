@@ -34,7 +34,7 @@ public class EntityInit /*extends EntityDragon*/ {
 	}
 
 	private static void registerSpawnEgg(String name, int bkEggColor, int fgEggColor) {
-	       Item itemSpawnEgg = new SpawnEgg(name, bkEggColor, fgEggColor).setUnlocalizedName("spawn_egg_"+name.toLowerCase()).setTextureName("ZombieInfection:spawn_egg");
+	       Item itemSpawnEgg = new SpawnEgg(name, bkEggColor, fgEggColor).setUnlocalizedName("spawn_egg_"+name.toLowerCase()).setTextureName("ZombieInfection:spawnEgg");
 	       GameRegistry.registerItem(itemSpawnEgg, "spawnEgg"+name);
 	}
 
