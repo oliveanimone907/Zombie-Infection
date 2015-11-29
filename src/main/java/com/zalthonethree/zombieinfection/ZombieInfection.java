@@ -32,7 +32,7 @@ import com.zalthonethree.zombieinfection.utility.LogHelper;
 import com.zalthonethree.zombieinfection.world.BiomeGenZend;
 import com.zalthonethree.zombieinfection.world.WorldProviderZend;
 
-@Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION) public class ZombieInfection /*extends EntityDragon*/ {
+@Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION, acceptedMinecraftVersions = "[1.8,1.8.8]") public class ZombieInfection /*extends EntityDragon*/ {
 	@Mod.Instance(Reference.MOD_ID) public static ZombieInfection instance;
 	public static Potion potionInfection;
 	public static Potion potionCure;

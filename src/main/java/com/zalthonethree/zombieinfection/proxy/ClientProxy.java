@@ -6,7 +6,6 @@ import net.minecraft.client.model.ModelCow;
 import net.minecraft.client.model.ModelDragon;
 import net.minecraft.client.model.ModelEnderman;
 import net.minecraft.client.model.ModelPig;
-import net.minecraft.client.model.ModelZombie;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
@@ -59,7 +58,7 @@ public class ClientProxy extends CommonProxy/*, EntityDragon*/ {
 		RenderingRegistry.registerEntityRenderingHandler(EntityZombiePig.class, new RenderZombiePig(Minecraft.getMinecraft().getRenderManager(), new ModelPig(), shadowSize));
 		RenderingRegistry.registerEntityRenderingHandler(EntityZombieSheep.class, new RenderZombieSheep(Minecraft.getMinecraft().getRenderManager(), new ModelZombieSheep(), shadowSize));
 		RenderingRegistry.registerEntityRenderingHandler(EntityEnderZombie.class, new RenderEnderZombie(Minecraft.getMinecraft().getRenderManager(), new ModelEnderman(0F), shadowSize));
-		RenderingRegistry.registerEntityRenderingHandler(EntityZombieDragon.class, new RenderZombieDragon(Minecraft.getMinecraft().getRenderManager(), new ModelZombieDragonEgg(), shadowSize));
+		RenderingRegistry.registerEntityRenderingHandler(EntityZombieDragon.class, new RenderZombieDragon(Minecraft.getMinecraft().getRenderManager(), new ModelDragon(0F), new ModelZombieDragonEgg(), shadowSize));
 		ModelHelper.registerBlock(ModBlocks.zendStone);
 	}
 

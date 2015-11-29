@@ -47,7 +47,7 @@ public class EntityEnderZombie extends EntityMob/*, EntityDragon*/ implements IZ
 		this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityZombieDragon.class, 100, false, false, new com.google.common.base.Predicate() {
 			public boolean isApplicable(EntityLivingBase entity) {
 				if (entity instanceof EntityZombieDragon) {
-					return ((EntityZombieDragon) entity).isEgg;
+					return ((EntityZombieDragon) entity).isEgg();
 				}
 				return false;
 			}

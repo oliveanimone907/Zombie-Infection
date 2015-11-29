@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import com.zalthonethree.zombieinfection.init.ModBlocks;
-
 import net.minecraft.block.BlockFalling;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -26,6 +24,8 @@ import net.minecraftforge.event.terraingen.ChunkProviderEvent;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent;
 import net.minecraftforge.event.terraingen.TerrainGen;
 import net.minecraftforge.fml.common.eventhandler.Event.Result;
+
+import com.zalthonethree.zombieinfection.init.ModBlocks;
 
 public class ChunkProviderZend implements IChunkProvider {
 	public static int topOfStructure = 0;
@@ -99,14 +99,21 @@ public class ChunkProviderZend implements IChunkProvider {
 							
 							for (int j2 = 0; j2 < 8; j2 ++) {
 								IBlockState iblockstate = null;
-								
-								if (d15 > 0.0D) {
-									iblockstate = ModBlocks.zendStone.getDefaultState();
-								}
-								
 								int k2 = i2 + i1 * 8;
 								int l2 = l1 + k1 * 4;
 								int i3 = j2 + j1 * 8;
+								
+								if (d15 > 0.0D) {
+									if (chunkX == 0 && chunkZ == 0 ||
+										chunkX == 0 && chunkZ == -1 ||
+										chunkX == -1 && chunkZ == 0 ||
+										chunkX == -1 && chunkZ == -1) {
+										iblockstate = Blocks.end_stone.getDefaultState();
+									} else {
+										iblockstate = ModBlocks.zendStone.getDefaultState();
+									}
+								}
+								
 								primer.setBlockState(k2, l2, i3, iblockstate);
 								d15 += d16;
 							}
@@ -165,75 +172,11 @@ public class ChunkProviderZend implements IChunkProvider {
 		}
 	}
 	
-	boolean topOfStructureGotten = false;
-	IBlockState STRUCTURE_BLOCK = Blocks.end_stone.getDefaultState();
-	
-	void createDragonStructure(ChunkPrimer primer, int chunkX, int chunkZ) {
-		if (!topOfStructureGotten) {
-			for (int i = 256; i > 0; i --) {
-				if (primer.getBlockState(0, i - 1, 0).getBlock() == Blocks.air) continue;
-				topOfStructure = i;
+	void createDragonEgg(ChunkPrimer primer) {
+		for (int i = 256; i > 0; i --) {
+			if (primer.getBlockState(0, i - 1, 0).getBlock() != Blocks.air) {
+				primer.setBlockState(0, i, 0, ModBlocks.dragonSpawner.getDefaultState());
 				break;
-			}
-			topOfStructureGotten = true;
-		}
-		
-		if (chunkX == 0 && chunkZ == 0) {
-			int iteration = 1;
-			
-			primer.setBlockState(0, topOfStructure + 5, 0, ModBlocks.dragonSpawner.getDefaultState());
-			for (int i = topOfStructure + 4; i >= topOfStructure; i --) {
-				for (int x = 0; x < iteration; x ++) {
-					for (int z = 0; z < iteration; z ++) {
-						if (primer.getBlockState(x, i, z).getBlock() == Blocks.air) {
-							primer.setBlockState(x, i, z, STRUCTURE_BLOCK);
-							endStoneLocations.add(new BlockPos((chunkX * 16) + x, i, (chunkZ * 16) + z));
-						}
-					}
-				}
-				iteration ++;
-			}
-		} else if (chunkX == 0 && chunkZ == -1) {
-			int iteration = 1;
-			
-			for (int i = topOfStructure + 4; i >= topOfStructure; i --) {
-				for (int x = 0; x < iteration; x ++) {
-					for (int z = 15; z > (15 - iteration); z --) {
-						if (primer.getBlockState(x, i, z).getBlock() == Blocks.air) {
-							primer.setBlockState(x, i, z, STRUCTURE_BLOCK);
-							endStoneLocations.add(new BlockPos((chunkX * 16) + x, i, (chunkZ * 16) + z));
-						}
-					}
-				}
-				iteration ++;
-			}
-		} else if (chunkX == -1 && chunkZ == 0) {
-			int iteration = 1;
-			
-			for (int i = topOfStructure + 4; i >= topOfStructure; i --) {
-				for (int x = 15; x > (15 - iteration); x --) {
-					for (int z = 0; z < iteration; z ++) {
-						if (primer.getBlockState(x, i, z).getBlock() == Blocks.air) {
-							primer.setBlockState(x, i, z, STRUCTURE_BLOCK);
-							endStoneLocations.add(new BlockPos((chunkX * 16) + x, i, (chunkZ * 16) + z));
-						}
-					}
-				}
-				iteration ++;
-			}
-		} else if (chunkX == -1 && chunkZ == -1) {
-			int iteration = 1;
-			
-			for (int i = topOfStructure + 4; i >= topOfStructure; i --) {
-				for (int x = 15; x > (15 - iteration); x --) {
-					for (int z = 15; z > (15 - iteration); z --) {
-						if (primer.getBlockState(x, i, z).getBlock() == Blocks.air) {
-							primer.setBlockState(x, i, z, STRUCTURE_BLOCK);
-							endStoneLocations.add(new BlockPos((chunkX * 16) + x, i, (chunkZ * 16) + z));
-						}
-					}
-				}
-				iteration ++;
 			}
 		}
 	}
@@ -244,7 +187,7 @@ public class ChunkProviderZend implements IChunkProvider {
 		this.setBlocksInChunk(chunkX, chunkZ, primer);
 		this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, chunkX * 16, chunkZ * 16, 16, 16);
 		this.replaceBlocksForBiome(chunkX, chunkZ, primer, this.biomesForGeneration);
-		if ((chunkX == -1 && chunkZ == 0) || (chunkX == -1 && chunkZ == -1) || (chunkX == 0 && chunkZ == -1) || (chunkX == 0 && chunkZ == 0)) createDragonStructure(primer, chunkX, chunkZ);
+		if (chunkX == 0 && chunkZ == 0) createDragonEgg(primer);
 		Chunk chunk = new Chunk(this.worldObj, primer, chunkX, chunkZ);
 		byte[] abyte = chunk.getBiomeArray();
 		
