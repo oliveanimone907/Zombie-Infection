@@ -1,0 +1,52 @@
+# Chat Messages # 
+
+zombieinfection.chat.infected=Du wurdest infiziert!
+zombieinfection.chat.playerinfected=Ein Spieler hat dich infiziert!
+zombieinfection.chat.rotteninfection=Du wurdest durch irgendein schlechtes Essen infiziert!
+
+zombieinfection.update.major=Es gibt ein großes neues Update für "Zombie Infection"!
+zombieinfection.update.minor=Es gibt ein kleines neuse Update für "Zombie Infection"!
+zombieinfection.update.download=["Drücke für... [",{"text":"CurseForge Download","color":"gold","hoverEvent":{"action":"show_text","value":{"text":"Download Seite","color":"aqua"}},"clickEvent":{"action":"open_url","value":"http://minecraft.curseforge.com/mc-mods/227518-zombie-infection/files"}},"]"]
+
+# Entities #
+
+entity.ZombieInfection.ZIZombieChicken.name=Zombie Huhn
+entity.ZombieInfection.ZIZombieCow.name=Zombie Kuh
+entity.ZombieInfection.ZIZombiePig.name=Zombie Schwein
+entity.ZombieInfection.ZIZombieSheep.name=Zombie Schaf
+
+# Items #
+
+item.zombieinfection:cure.name=Heilmittel
+item.zombieinfection:infectedEgg.name=Infiziertes Ei
+item.zombieinfection:infectedMilk.name=Infizierte Milch
+item.zombieinfection:knowledgeBook.name=Lehrbuch
+
+# Item Groups #
+
+itemGroup.zombieInfection=Zombie Infection
+
+# Tooltips #
+
+tooltip.cure=Heilt die Zombie Infektion
+tooltip.infectedeyes=Die Infektion hat deine Augen erreicht!
+tooltip.knowledgeBook=Ein Zombie Überlebenshandbuch
+
+# Potions #
+
+potion.zombieinfection.infection=Infektion
+potion.zombieinfection.cure=Heilmittel
+
+# Easter Eggs #
+
+easteregg.stew=Nudelsuppe
+easteregg.description.stew=Erhm.. Bist du sicher, dass das Nudeln sind?
+
+easteregg.egg=Schildkrötenei
+easteregg.description.egg=Sieht irgenwie komisch aus
+
+easteregg.sponge=Käse
+easteregg.description.sponge=Erstellt von Dizkonnekted
+
+easteregg.cooked_porkchop=Schinken
+easteregg.description.cooked_porkchop=Sieht gut aus
